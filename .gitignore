@@ -1,2 +1,4 @@
-gql-ts-app/node_modules
+# Ignore node modules 
+gql-ts-app/node_modules/**
+# Ignore package-lock.json
 gql-ts-app/package-lock.json
