@@ -4,3 +4,5 @@ gql-ts-app/node_modules/**
 gql-ts-app/package-lock.json
 #Ignore tsc compiled js files.
 gql-ts-app/dist/
+# Ignore graphql file
+gql-ts-app/graphql/src/schema/
