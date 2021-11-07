@@ -6,3 +6,5 @@ gql-ts-app/package-lock.json
 gql-ts-app/dist/
 # Ignore graphql file todo.
 gql-ts-app/graphql/src/schema/
+# Ignore schema file
+gql-ts-app/schema.gql
