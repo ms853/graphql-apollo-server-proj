@@ -4,25 +4,25 @@ import { Field, ObjectType, InputType } from 'type-graphql'
 export class Todo {
 
   @Field()
-  id: number 
+  id!: number 
 
   @Field()
-  title: string 
+  title!: string 
 
   @Field()
-  description: string 
+  description!: string 
 
   @Field()
-  status: boolean 
+  status!: boolean 
 }
 
 @InputType()
 export class TodoInput implements Partial<Todo> {
 
   @Field()
-  title: string 
+  title!: string 
 
   @Field()
-  description: string
-   
+  description!: string
+ 
 }

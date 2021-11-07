@@ -1,33 +1,34 @@
-import { ApolloServer, gql } from 'apollo-server';
-import * as sessions from '../data/sessions.json';
+import 'reflect-metadata'
+import { ApolloServer } from 'apollo-server-express'
+import express from 'express'
+import { buildSchema } from 'type-graphql'
 
-const typeDefs = gql`
-type Query {
-    sessions: [Session]
-}     
+import { TodoResolver } from '../src/resolver/todoResolver'
 
-type Session {
-    id: ID!,
-    title: String,
-    description: String,
-    startsAt: String,
-    endsAt: String,
-    room: String,
-    day: String,
-    format: String,
-    track: String,
-    level: String
-}`
+/**
+ * Function for initializing graphql apollo server.
+ * Configuring resolvers.
+ */
+async function main() {
 
-const resolvers = {
-    Query: {
-        sessions: function(): any[] {
-            return sessions;
-        }
-    }
-};
-   
-const server : ApolloServer = new ApolloServer({ typeDefs, resolvers });
+ 
 
-server.listen({ port: process.env.PORT || 4000 })
-.then((url) => { console.log(`graphql server is running on ${url.port}`)}); 
+  const app = express();
+
+  const schema = await buildSchema({
+    resolvers: [TodoResolver],
+    emitSchemaFile: true,
+  });
+  
+  const server = new ApolloServer({
+    schema,
+  });
+
+  server.applyMiddleware({ app })
+
+  app.listen(4000, () =>
+    console.log('Server is running on http://localhost:4000/graphql')
+  )
+}
+
+main()
