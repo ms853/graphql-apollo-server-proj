@@ -8,3 +8,5 @@ gql-ts-app/dist/
 gql-ts-app/graphql/src/schema/
 # Ignore schema file
 gql-ts-app/schema.gql
+# Ignore node modules in other app
+globalmantics-app/node_modules
